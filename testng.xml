@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="General Store">
+    <listeners>
+        <listener class-name="auntor.project.utilities.Reporting"/>
+    </listeners>
+    <test name="generalStoreEcommerceApp">
+        <classes>
+            <class name="auntor.project.testCases.LoginModule.loginModuleTest">
+            </class>
+        </classes>
+    </test>
+</suite>
