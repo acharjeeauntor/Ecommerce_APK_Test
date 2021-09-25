@@ -17,6 +17,8 @@ public class LoginPage extends BaseClass {
     AndroidElement genderSelection;
     @AndroidFindBy(id = "com.androidsample.generalstore:id/btnLetsShop")
     AndroidElement shopBtn;
+    @AndroidFindBy(xpath = "//android.widget.Toast[1]")
+    AndroidElement errorToast;
 
     public LoginPage(AndroidDriver driver) {
         ldriver = driver;
@@ -32,6 +34,17 @@ public class LoginPage extends BaseClass {
         ldriver.hideKeyboard();
         genderSelection.click();
         shopBtn.click();
+    }
+
+    public String getErrorMessage(String country){
+        countryNameDropDownOption.click();
+        scrollToView(country);
+        ldriver.findElementByXPath("//*[@text='"+country+"']").click();
+        genderSelection.click();
+        shopBtn.click();
+        //name attribute for toast messages will have content
+       String errorMsg = errorToast.getAttribute("name");
+       return errorMsg;
     }
 
 }

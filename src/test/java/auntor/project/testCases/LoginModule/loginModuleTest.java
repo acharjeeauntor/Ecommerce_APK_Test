@@ -11,7 +11,29 @@ import java.io.IOException;
 public class loginModuleTest extends BaseClass {
     LoginPage loginPage;
     ProductListPage productListPage;
-    @Test
+
+    /*
+Test case:
+1. Verify error toast message is showing or not when name field is empty
+2. Verify app goes to shop page by entering all valid information (Country,name,gender)
+
+ */
+
+    @Test(priority = 1)
+    public void checkEmptyFieldValidation() throws IOException {
+        loginPage=new LoginPage(driver);
+       String message = loginPage.getErrorMessage("Bangladesh");
+       if(message.equals("Please enter your name")){
+           logger.info("Test Passed");
+           Assert.assertTrue(true);
+       }else {
+           logger.warn("Test Failed");
+           captureScreen("checkEmptyFieldValidation");
+           Assert.assertTrue(false);
+       }
+    }
+
+    @Test(priority = 2)
     public void loginToApp() throws InterruptedException, IOException {
         loginPage=new LoginPage(driver);
         productListPage= new ProductListPage(driver);
@@ -26,4 +48,9 @@ public class loginModuleTest extends BaseClass {
             Assert.assertTrue(false);
         }
     }
+
+
+
+
+
 }
