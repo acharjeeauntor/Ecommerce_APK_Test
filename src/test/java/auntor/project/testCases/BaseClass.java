@@ -1,6 +1,7 @@
 package auntor.project.testCases;
 
 import auntor.project.utilities.Config;
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -12,7 +13,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +28,7 @@ public class BaseClass {
     public static Logger logger;
     public static AppiumDriverLocalService service;
 
-    @BeforeClass
+    @BeforeTest
     public void automationEnvStart() throws IOException, InterruptedException {
         logger = Logger.getLogger("GeneralStore");
         PropertyConfigurator.configure("log4j.properties");
@@ -33,7 +36,7 @@ public class BaseClass {
         capabilities();
     }
 
-    @AfterClass
+    @AfterTest
     public void automationEnvStop() {
         driver.quit();
         service.stop();
@@ -68,7 +71,7 @@ public class BaseClass {
 
         dc.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
         dc.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 14);
-
+        dc.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
         dc.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir") + "/TestApk/" + testApkName + ".apk");
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), dc);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

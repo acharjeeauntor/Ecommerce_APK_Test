@@ -6,8 +6,14 @@
     </listeners>
     <test name="generalStoreEcommerceApp">
         <classes>
-            <class name="auntor.project.testCases.LoginModule.loginModuleTest">
-            </class>
+            <class name="auntor.project.testCases.LoginModule.loginModuleTest"/>
+            <class name="auntor.project.testCases.productAndCartModule.selectedItemTest"/>
+        </classes>
+    </test>
+    <test name="generalStoreEcommerceApp">
+        <classes>
+            <class name="auntor.project.testCases.LoginModule.loginModuleTest"/>
+            <class name="auntor.project.testCases.productAndCartModule.ProductAmountAndGestureTest"/>
         </classes>
     </test>
 </suite>

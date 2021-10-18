@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class productAndCartModuleTest extends BaseClass {
+public class selectedItemTest extends BaseClass {
     ProductListPage productListPage;
     CartPage cartPage;
 

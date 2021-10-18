@@ -7,8 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="generalStoreEcommerceApp" />
-        <module name="sampleEcommerce" />
+        <module name="DIUSmartApp" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="DiuSmartApp" target="1.8" />
+      <module name="sampleEcommerce" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
